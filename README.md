@@ -10,7 +10,7 @@
 ## Description
 This project is mainly used to showcase a few different software development skillsets to potential employers. This app reads weather information from the open source API hosted on https://weather.gov/. The program will request access to the end-user's location data, and pass their latitude and longitude to the API to find the first endpoint. This endpoint houses the grid coordinates the NWS uses to locate weather forecast offices around the nation! These grid coordinates are then passed to a different endpoint in the API, which will give us a bunch of relevant information about the end-user's local forecast. 
 
-**NOTE:** This program is *not* meant to be a production-ready product, it is purely to showcase skillsets I have acquired over time.
+**NOTE:** This program is *not* meant to be a production-ready product, it is purely to showcase skillsets I have acquired over time, therefore it doesn't have much thought put into the UI design nor does it look very visually appealing in my own opinion.
 
 ## Prerequisites
 - Windows 10, version 1809 (build 17763) or later (including Windows 11)
