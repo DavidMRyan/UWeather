@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Windows.Devices.Geolocation;
+
+// @debug
+// using System.Diagnostics;
 
 namespace UWeather
 {
@@ -25,7 +27,7 @@ namespace UWeather
                     Console.WriteLine($"{e.GetType().FullName} {e.Message}");
             }
 
-            return GeolocationAccessStatus.Denied;
+            return GeolocationAccessStatus.Unspecified;
         }
 
         /// <summary>
@@ -34,19 +36,19 @@ namespace UWeather
         /// <returns>Current Device's Geocoordinate</returns>
         public static Geocoordinate GetDeviceGeocoordinate()
         {
-            // @todo Debug Log or Show MessageBox with Error.
-            if (!GetGeolocationAccessStatus().Equals(GeolocationAccessStatus.Allowed))
-                return null; 
-            try
-            {
-                return Task.Run(async () => { return await new Geolocator().GetGeopositionAsync(); }).Result.Coordinate;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"{e.GetType().FullName} {e.Message}");
-            }
 
-            return null;
+            if (GetGeolocationAccessStatus().Equals(GeolocationAccessStatus.Allowed))
+                return Task.Run(async () => { return await new Geolocator().GetGeopositionAsync(); }).Result.Coordinate;
+            else
+            {
+                // Return a fallback consentless position if location access is denied
+                return Task.Run(async () => 
+                {
+                    var geolocator = new Geolocator();
+                    geolocator.AllowFallbackToConsentlessPositions();
+                    return await geolocator.GetGeopositionAsync();
+                }).Result.Coordinate;
+            }
         }
     }
 }
