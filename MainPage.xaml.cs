@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
 
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 using Windows.Devices.Geolocation;
+
+// @temp
+using System.Threading.Tasks;
+using Windows.Storage;
+
+// @debug
+// using System.Diagnostics;
 
 namespace UWeather
 {
@@ -22,8 +28,10 @@ namespace UWeather
         {
             this.InitializeComponent();
             // @debug -> Remove in production release.
-            AllocConsole();
-            
+            //AllocConsole();
+
+            Task.Run(async () => { await ApplicationData.Current.ClearAsync(); });
+
             // Set window size on page load
             ApplicationView.PreferredLaunchViewSize = new Size(600, 900);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
