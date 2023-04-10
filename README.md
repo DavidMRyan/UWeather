@@ -4,8 +4,7 @@
 <!-- [![License: GPL v3]() -->
 
 # UWeather
-<!-- TODO: Add a preview image. -->
-<!-- ![](https://i.imgur.com/) -->
+![](https://i.imgur.com/IoS5bEg.png)
 
 ## Description
 This project is mainly used to showcase a few different software development skillsets to potential employers. This app reads weather information from the open source API hosted on https://weather.gov/. The program will request access to the end-user's location data, and pass their latitude and longitude to the API to find the first endpoint. This endpoint houses the grid coordinates the NWS uses to locate weather forecast offices around the nation! These grid coordinates are then passed to a different endpoint in the API, which will give us a bunch of relevant information about the end-user's local forecast. 
