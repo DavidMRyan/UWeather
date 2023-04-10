@@ -33,7 +33,7 @@ namespace UWeather
             Task.Run(async () => { await ApplicationData.Current.ClearAsync(); });
 
             // Set window size on page load
-            ApplicationView.PreferredLaunchViewSize = new Size(600, 900);
+            ApplicationView.PreferredLaunchViewSize = new Size(600, 800);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 
             InitializeUI();
